@@ -1,0 +1,55 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.navbar-custom {
+    background-color: white;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+.logo-box {
+    width: 70px;
+    height: 70px;
+    border: 2px dashed #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #fafafa;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.search-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.pokemon-img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.badge-type {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.login-warning {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-weight: 500;
+}

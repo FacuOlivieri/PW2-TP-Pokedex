@@ -14,57 +14,6 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
-
-
-    <style>
-        body {
-            background-color: #f5f5f5;
-        }
-
-        .navbar-custom {
-            background-color: white;
-            border-bottom: 2px solid #dcdcdc;
-        }
-
-        .logo-box {
-            width: 70px;
-            height: 70px;
-            border: 2px dashed #999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            background-color: #fafafa;
-        }
-
-        .title {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .search-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .table-container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .pokemon-img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-        }
-
-        .badge-type {
-            font-size: 0.9rem;
-            padding: 8px 12px;
-        }
-    </style>
 </head>
 
 <body>
@@ -75,25 +24,44 @@
 
         <!-- Logo -->
         <div class="d-flex align-items-center gap-3">
-            <div class="logo-box">
-                Logo
-            </div>
-
+            <div class="logo-box">Logo</div>
             <h1 class="title m-0">Pokedex</h1>
         </div>
 
-        <!-- Login -->
-        <form class="d-flex gap-2 ms-auto">
+        <!-- CONTENEDOR LOGIN -->
+        <div class="d-flex flex-column align-items-end ms-auto">
 
-            <input type="text" class="form-control" placeholder="Usuario">
+            <!-- FORM -->
+            <form action="validarAdmin.php" class="d-flex gap-2" method="post">
+                <input type="text" class="form-control" placeholder="Usuario" name="username">
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <input class="btn btn-danger" type="submit" value="Ingresar">
+            </form>
 
-            <input type="password" class="form-control" placeholder="Password">
-
-            <button class="btn btn-danger">
-                Ingresar
-            </button>
-
-        </form>
+            <?php
+            if (isset($_GET["campoVacio"])) {
+                echo "
+                        <p class='login-warning'>
+                            <i class='bi bi-exclamation-circle'></i>
+                            Ningún campo debe quedar vacío
+                        </p>
+                    ";
+            }
+            /*
+             * ACA IRIA SI ESTAN MAL LA CONTRASEÑA O EL USUARIO, CONTRASTAR CON BD
+             *
+             *
+                    if (isset($_GET["errorLogin"])) {
+                        echo "
+                                <p class='login-warning'>
+                                    <i class='bi bi-exclamation-circle'></i>
+                                    Usuario o contraseña incorrectos
+                                </p>
+                            ";
+                    }
+            */
+            ?>
+        </div>
 
     </div>
 </nav>
