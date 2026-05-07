@@ -16,7 +16,7 @@
     <title>Pokedex Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -246,10 +246,7 @@
 
     <!-- BOTÓN NUEVO POKÉMON -->
     <div class="d-grid mt-4 mb-5">
-
-        <button class="btn btn-success btn-lg">
-            <i class="bi bi-plus-circle"></i>Nuevo Pokémon
-        </button>
+        <a href="altaPokemon.php" class="btn btn-success btn-lg"><i class="bi bi-plus-circle"></i>Nuevo Pokémon</a>
     </div>
 
 </div>

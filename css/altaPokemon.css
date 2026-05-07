@@ -1,0 +1,30 @@
+.type-card {
+    border: 2px solid #e2e2e2;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transition: 0.2s;
+    background-color: white;
+}
+
+.type-card:hover {
+    border-color: #0d6efd;
+    transform: scale(1.02);
+}
+
+.type-card input {
+    width: 18px;
+    height: 18px;
+}
+
+.type-icon {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
