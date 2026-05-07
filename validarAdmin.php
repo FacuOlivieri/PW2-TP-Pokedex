@@ -32,6 +32,10 @@ $passwordIngresada = $_POST["password"];
         exit();
     }
 
+
+
+    session_name("Admin_Pokedex");
+    session_start();
     header("Location: indexAdmin.php");
 
     $query->close();

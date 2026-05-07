@@ -53,3 +53,9 @@ body {
     margin-bottom: 0;
     font-weight: 500;
 }
+
+.admin-user {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+}
