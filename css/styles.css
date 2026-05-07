@@ -59,3 +59,50 @@ body {
     font-weight: 600;
     color: #444;
 }
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.actions a:hover {
+    transform: translateY(-1px);
+}
+
+.actions .edit {
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
+    color: white;
+}
+
+.actions .edit:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: white;
+}
+
+.actions .delete {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    color: white;
+}
+
+.actions .delete:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+    color: white;
+}

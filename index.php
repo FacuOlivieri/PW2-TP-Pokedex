@@ -41,6 +41,12 @@
             </form>
 
             <?php
+
+            $userid = uniqid("user_",true);
+
+            setcookie("adminPokemon",$userid,time()+3600);
+
+
             if (isset($_GET["campoVacio"])) {
                 echo "
                         <p class='login-warning'>

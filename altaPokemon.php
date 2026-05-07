@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +77,7 @@
                         echo "<div class='col-md-3 mb-3'>";
                         echo "<label class='type-card'>";
                         echo "<img src=$icono class='type-icon' alt='Fuego'>";
-                        echo "<input type='checkbox' name='tipo[]' value=$tipo required><span>$tipo</span>";
+                        echo "<input type='checkbox' name='tipo[]' value=$tipo><span>$tipo</span>";
                         echo "</label>";
                         echo "</div>";
                     }
@@ -103,3 +107,6 @@
 </div>
 </body>
 </html>
+<?php
+?>
+

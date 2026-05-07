@@ -2,8 +2,12 @@
     session_name("Admin_Pokedex");
     session_start();
 
+    //Conectar con el servidor de bases de datos y
+    //Seleccionar una base de datos
+    $conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
 
-
+    //Enviar la instrucción SQL a la base de datos
+    $resultado = $conexion->query("SELECT * FROM pokemon");
 
 ?>
 
@@ -100,141 +104,22 @@
 
                 <tbody>
 
-                <!-- FILA -->
-                <tr>
+                <?php
+                //Obtener y procesar los resultados
+                while ( $pokemon = $resultado->fetch_assoc() ) {
+                    echo "<tr>";
+                    echo "<td>" . $pokemon["imagen"] . "</td>";
+                    echo "<td>" . $pokemon["tipo"] . "</td>";
+                    echo "<td>" . $pokemon["numero_identificador"] . "</td>";
+                    echo "<td>" . $pokemon["nombre"] . "</td>";
+                    echo "    <td class='actions'>
+                <a href='editar.php?id=" . $pokemon["id"] .  "' class='edit'>Editar</a>
+                <a href='eliminar.php?id=" . $pokemon["id"] .  "' class='delete'>Eliminar</a>
+                </td>";
+                    echo "</tr>";
+                }
 
-                    <td>
-                        <img
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-                            class="pokemon-img"
-                        >
-                    </td>
-
-                    <td>
-
-                        <span class="badge bg-danger badge-type">
-                            Fuego
-                        </span>
-
-                    </td>
-
-                    <td>
-                        #004
-                    </td>
-
-                    <td>
-                        Charmander
-                    </td>
-
-                    <td>
-
-                        <div class="d-flex justify-content-center gap-2">
-
-                            <button class="btn btn-warning btn-sm text-white">
-                                Modificar
-                            </button>
-
-                            <button class="btn btn-danger btn-sm">
-                                Baja
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <!-- FILA -->
-                <tr>
-
-                    <td>
-                        <img
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
-                            class="pokemon-img"
-                        >
-                    </td>
-
-                    <td>
-
-                        <span class="badge bg-warning text-dark badge-type">
-                            Fuego
-                        </span>
-
-                    </td>
-
-                    <td>
-                        #005
-                    </td>
-
-                    <td>
-                        Charmeleon
-                    </td>
-
-                    <td>
-
-                        <div class="d-flex justify-content-center gap-2">
-
-                            <button class="btn btn-warning btn-sm text-white">
-                                Modificar
-                            </button>
-
-                            <button class="btn btn-danger btn-sm">
-                                Baja
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                </tr>
-
-                <!-- FILA -->
-                <tr>
-
-                    <td>
-                        <img
-                            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-                            class="pokemon-img"
-                        >
-                    </td>
-
-                    <td>
-
-                        <span class="badge bg-danger badge-type">
-                            Fuego
-                        </span>
-
-                        <span class="badge bg-primary badge-type">
-                            Volador
-                        </span>
-
-                    </td>
-
-                    <td>
-                        #006
-                    </td>
-
-                    <td>
-                        Charizard
-                    </td>
-
-                    <td>
-
-                        <div class="d-flex justify-content-center gap-2">
-
-                            <button class="btn btn-warning btn-sm text-white">
-                                Modificar
-                            </button>
-
-                            <button class="btn btn-danger btn-sm">
-                                Baja
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                </tr>
+                ?>
 
                 </tbody>
 
