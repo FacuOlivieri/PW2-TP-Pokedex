@@ -47,19 +47,13 @@
                         </p>
                     ";
             }
-            /*
-             * ACA IRIA SI ESTAN MAL LA CONTRASEÑA O EL USUARIO, CONTRASTAR CON BD
-             *
-             *
-                    if (isset($_GET["errorLogin"])) {
-                        echo "
-                                <p class='login-warning'>
-                                    <i class='bi bi-exclamation-circle'></i>
-                                    Usuario o contraseña incorrectos
-                                </p>
-                            ";
-                    }
-            */
+            if (isset($_GET["credencialesIncorrectas"])) {
+            echo "<p class='login-warning'>
+                  <i class='bi bi-exclamation-circle'></i>
+                  Usuario o contraseña incorrectos
+                  </p>";
+            }
+
             ?>
         </div>
 
