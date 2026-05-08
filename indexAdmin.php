@@ -106,21 +106,33 @@
 
                 <?php
                 //Obtener y procesar los resultados
+                $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
+
                 while ( $pokemon = $resultado->fetch_assoc() ) {
                     echo "<tr>";
-                    echo "<td>" . $pokemon["imagen"] . "</td>";
-                    echo "<td>" . $pokemon["tipo"] . "</td>";
+                    echo "<td><img src='" . $pokemon['imagen'] . "' class='pokemon-img'></td>";
+
+                    // TIPOS
+                    $tipos = explode(",", $pokemon['tipo']);
+                    echo "<td>";
+                    foreach ($tipos as $tipo) {
+                        if (isset($iconosGuardados[$tipo])) {
+                            echo "<img src='" . $iconosGuardados[$tipo] . "' class='iconos-tabla' alt='$tipo'>";
+                        }
+                    }
+                    echo "</td>";
+
                     echo "<td>" . $pokemon["numero_identificador"] . "</td>";
                     echo "<td>" . $pokemon["nombre"] . "</td>";
-                    echo "    <td class='actions'>
-                <a href='editar.php?id=" . $pokemon["id"] .  "' class='edit'>Editar</a>
-                <a href='eliminar.php?id=" . $pokemon["id"] .  "' class='delete'>Eliminar</a>
-                </td>";
+                    echo "<td>
+                         <div class='actions'>
+                         <a href='editar.php?id=" . $pokemon["id"] . "' class='edit'>Editar</a>
+                         <a href='eliminar.php?id=" . $pokemon["id"] . "' class='delete'>Eliminar</a>
+                         </div>
+                         </td>";
                     echo "</tr>";
                 }
-
                 ?>
-
                 </tbody>
 
             </table>

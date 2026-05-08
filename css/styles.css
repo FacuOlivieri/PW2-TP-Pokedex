@@ -106,3 +106,10 @@ body {
     border-color: #bb2d3b;
     color: white;
 }
+
+.iconos-tabla {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin-right: 5px;
+}

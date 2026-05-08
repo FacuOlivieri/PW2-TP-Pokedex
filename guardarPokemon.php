@@ -2,12 +2,16 @@
 
 $numero_identificador = $_POST["numero_identificador"];
 $nombre = $_POST["nombre"];
+
+
 $imagen = $_FILES["imagen"];
+$rutaImagen = "imagenes/pokemon/" . $imagen["name"];
+move_uploaded_file($imagen["tmp_name"], $rutaImagen);
+
+
 $descripcion = $_POST["descripcion"];
 $datos_extras = $_POST["datos_extras"];
 $tipo = implode(",", $_POST["tipo"]);
-
-
 
 //Conexión con BD
 $conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
@@ -18,7 +22,7 @@ $conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
  */
 
 $sql = "INSERT INTO pokemon (numero_identificador, imagen, nombre, tipo, descripcion, datos_extras) 
-        VALUES ('$numero_identificador', '$imagen', '$nombre', '$tipo', '$descripcion', '$datos_extras')";
+        VALUES ('$numero_identificador', '$rutaImagen', '$nombre', '$tipo', '$descripcion', '$datos_extras')";
 
 
 

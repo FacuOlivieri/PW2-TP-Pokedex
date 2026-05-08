@@ -1,5 +1,7 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) {}
+$conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
+$resultado = $conexion->query("SELECT * FROM pokemon");
+
 
 ?>
 
@@ -93,104 +95,50 @@
 
     <!-- TABLA -->
     <div class="table-container shadow-sm">
-
-        <h3 class="mb-4">Listado de Pokémon</h3>
+        <h3 class="mb-4">
+            Lista de Pokemones
+        </h3>
 
         <div class="table-responsive">
-
             <table class="table table-hover align-middle text-center">
-
                 <thead class="table-dark">
                 <tr>
                     <th>Imagen</th>
                     <th>Tipo</th>
                     <th>Número</th>
                     <th>Nombre</th>
-                    <th>Acciones</th>
                 </tr>
                 </thead>
 
                 <tbody>
+                <?php
+                //Obtener y procesar los resultados
+                $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
 
-                <tr>
-                    <td>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-                             class="pokemon-img">
-                    </td>
-                    <td>
-                        <span class="badge bg-danger badge-type">
-                            Fuego
-                         </span>
-                    </td>
-                    <td>#004</td>
-                    <td>Charmander</td>
-                    <td>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Ver detalle
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
-                             class="pokemon-img">
-                    </td>
-                    <td>
-                                <span class="badge bg-warning text-dark badge-type">
-                                    Fuego
-                                </span>
-                    </td>
-                    <td>#005</td>
-                    <td>Charmeleon</td>
-                    <td>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Ver detalle
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-                             class="pokemon-img">
-                    </td>
-                    <td>
-                                <span class="badge bg-danger badge-type">
-                                    Fuego
-                                </span>
-                        <span class="badge bg-primary badge-type">
-                                    Volador
-                                </span>
-                    </td>
-                    <td>#006</td>
-                    <td>Charizard</td>
-                    <td>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Ver detalle
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-                             class="pokemon-img">
-                    </td>
-                    <td>
-                        <span class="badge bg-warning text-dark badge-type">
-                            Eléctrico
-                        </span>
-                    </td>
-                    <td>#025</td>
-                    <td>Pikachu</td>
-                    <td>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Ver detalle
-                        </button>
-                    </td>
-                </tr>
+                while ( $pokemon = $resultado->fetch_assoc() ) {
+                    echo "<tr>";
+                    echo "<td><img src='" . $pokemon['imagen'] . "' class='pokemon-img'></td>";
 
+                    // TIPOS
+                    $tipos = explode(",", $pokemon['tipo']);
+                    echo "<td>";
+                    foreach ($tipos as $tipo) {
+                        if (isset($iconosGuardados[$tipo])) {
+                            echo "<img src='" . $iconosGuardados[$tipo] . "' class='iconos-tabla' alt='$tipo'>";
+                        }
+                    }
+                    echo "</td>";
+                    echo "<td>" . $pokemon["numero_identificador"] . "</td>";
+                    echo "<td>" . $pokemon["nombre"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
                 </tbody>
+
             </table>
+
         </div>
+
     </div>
 </div>
 </body>
