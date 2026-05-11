@@ -6,7 +6,7 @@ session_start();
 if ($_POST['username'] == "admin" && $_POST['password'] == "1234") {
     $_SESSION['Admin_Pokedex'] = "valido";
     $_SESSION['usuario'] = $_POST['username'];
-    header("Location: altaPokemon.php");
+    header("Location: index.php");
     exit();
 
 } else {

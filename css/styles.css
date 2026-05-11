@@ -1,12 +1,17 @@
 body {
     background-color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+    color: #212529;
 }
 
+/* NAVBAR */
 .navbar-custom {
     background-color: white;
     border-bottom: 2px solid #dcdcdc;
+    padding: 15px 0;
 }
 
+/* LOGO */
 .logo-box {
     width: 70px;
     height: 70px;
@@ -16,36 +21,92 @@ body {
     justify-content: center;
     font-weight: bold;
     background-color: #fafafa;
+    border-radius: 10px;
 }
 
-.title {
+/* TITULO */
+.title,
+.main-title {
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: #212529;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* SUBTITULOS */
+.section-title {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #343a40;
 }
 
+/* BUSCADOR */
 .search-section {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 20px;
 }
 
+.search-section input {
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 1rem;
+}
+
+.search-section button {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* CONTENEDOR TABLA */
 .table-container {
     background-color: white;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 25px;
 }
 
+/* TABLA */
+table {
+    font-size: 1rem;
+}
+
+table th {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+}
+
+table td {
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+/* IMAGENES */
 .pokemon-img {
     width: 70px;
     height: 70px;
     object-fit: contain;
 }
 
+/* ICONOS */
+.iconos-tabla {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    margin-right: 5px;
+}
+
+/* BADGES */
 .badge-type {
     font-size: 0.9rem;
     padding: 8px 12px;
 }
 
+/* LOGIN WARNING */
 .login-warning {
     color: #dc3545;
     font-size: 0.9rem;
@@ -54,12 +115,14 @@ body {
     font-weight: 500;
 }
 
+/* USUARIO ADMIN */
 .admin-user {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #444;
 }
 
+/* ACCIONES */
 .actions {
     display: flex;
     justify-content: center;
@@ -80,9 +143,10 @@ body {
 }
 
 .actions a:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
+/* BOTON EDITAR */
 .actions .edit {
     background-color: #ffc107;
     border: 1px solid #ffc107;
@@ -95,6 +159,7 @@ body {
     color: white;
 }
 
+/* BOTON ELIMINAR */
 .actions .delete {
     background-color: #dc3545;
     border: 1px solid #dc3545;
@@ -107,9 +172,7 @@ body {
     color: white;
 }
 
-.iconos-tabla {
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
-    margin-right: 5px;
+/* SOMBRAS SUAVES */
+.shadow-sm {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06) !important;
 }

@@ -1,8 +1,11 @@
 <?php
-include("config/db.php");
+include("config/bd.php");
+include("includes/header.php");
 ?>
 
+<?php
 // includes/header.php
+?>
 <!-- NAVBAR -->
             <h1 class="title m-0">Alta Pokémon</h1>
         </div>

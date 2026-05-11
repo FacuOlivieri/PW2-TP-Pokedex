@@ -56,15 +56,7 @@ $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
             </a>
 
         </div>
-    
         <h1 class="mb-4"> Administracion Pokedex </h1>
-
-        <div class="mb-4">
-            <a href="agregar.php"
-                class="btn btn-success">
-                Nuevo Pokemon
-            </a>
-        </div>
     </div>
 </nav>
 
@@ -172,13 +164,13 @@ $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
         </div>
     </div>
 
-<!-- BOTÓN NUEVO POKÉMON -->
-<div class="d-grid mt-4 mb-5">
-    <a href="altaPokemon.php" class="btn btn-success btn-lg">
-    <i class="bi bi-plus-circle"> </i>
-    Nuevo Pokémon
-    </a>
-</div>
+    <!-- BOTÓN NUEVO POKÉMON -->
+    <div class="d-grid mt-4 mb-5">
+        <a href="altaPokemon.php" class="btn btn-success btn-lg">
+        <i class="bi bi-plus-circle"> </i>
+        Nuevo Pokémon
+        </a>
+    </div>
 
 </div>
 <?php include("includes/footer.php"); ?>
