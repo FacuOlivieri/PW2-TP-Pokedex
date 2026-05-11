@@ -59,7 +59,7 @@ $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
                     type="text"
                     class="form-control form-control-lg"
                     name="buscar"
-                    placeholder="Ingrese el nombre, tipo o nÃºmero del PokÃ©mon"
+                    placeholder="Ingrese el nombre, tipo o número del Pokemon"
                     value="<?php echo htmlspecialchars($buscar); ?>">
             </div>
 

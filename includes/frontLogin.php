@@ -12,14 +12,14 @@
     if (isset($_GET["campoVacio"])) {
         echo "<p class='login-warning'>
             <i class='bi bi-exclamation-circle'> </i>
-            NingÃºn campo debe quedar vacÃ­o
+            Ningun campo debe quedar vacio
         </p>";
     }
 
     if (isset($_GET["credencialesIncorrectas"])) {
         echo "<p class='login-warning'>
             <i class='bi bi-exclamation-circle'> </i>
-            Usuario o contraseÃ±a incorrectos
+            Usuario o contrase&ntilde;a incorrectos
         </p>";
     }
     ?>
