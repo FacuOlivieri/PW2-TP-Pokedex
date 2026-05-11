@@ -1,6 +1,6 @@
 <?php
 // Modificar pokémon
-include("config/db.php");
+include("config/bd.php");
 include("includes/header.php");
 
 // Verificar admin:

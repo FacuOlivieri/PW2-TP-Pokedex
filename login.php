@@ -1,12 +1,12 @@
 <?php
 // Login administrador usando sesiones
-include("config/db.php");
+include("config/bd.php");
 include("includes/header.php");
 
 // Si ya inició sesión
 if(isset($_SESSION['admin'])){
 
-    header("Location: adminIndex.php");
+    header("Location: indexAdmin.php");
     exit();
 }
 // sino:

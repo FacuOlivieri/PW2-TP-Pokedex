@@ -1,7 +1,7 @@
 <?php
 // Página principal del administrador logueado
 // Permite ver, editar, eliminar y agregar pokémon
-include("config/db.php");
+include("config/bd.php");
 include("includes/header.php");
 
 //si es admin, entonces:

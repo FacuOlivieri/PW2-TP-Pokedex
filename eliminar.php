@@ -1,6 +1,6 @@
 <?php
 // Eliminar pokémon
-include("config/db.php");
+include("config/bd.php");
 session_start();
 
 $id = $_GET['id'];

@@ -1,6 +1,6 @@
 <?php
 // Actualizar Pokémon
-include("config/db.php");
+include("config/bd.php");
 session_name("Admin_Pokedex");
 session_start();
 
@@ -12,7 +12,7 @@ if(!isset($_SESSION['admin'])){
 
 // VALIDAR ID
 if(!isset($_POST['id'])){
-    header("Location: adminIndex.php");
+    header("Location: indexAdmin.php");
     exit();
 }
 
@@ -42,6 +42,7 @@ if(isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
 }
 
 // actualizacion: 
+
 $statement = $conexion->prepare("
     UPDATE pokemon 
     SET numero_identificador = ?,
@@ -68,6 +69,6 @@ $statement->execute();
 $statement->close();
 $conexion->close();
 
-header("Location: adminIndex.php");
+header("Location: indexAdmin.php");
 exit();
 ?>
