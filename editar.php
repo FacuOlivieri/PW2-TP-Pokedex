@@ -4,7 +4,7 @@ include("config/bd.php");
 include("includes/header.php");
 
 // Verificar admin:
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['Admin_Pokedex'])){
     header("Location: index.php");
     exit();
 }

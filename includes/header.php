@@ -1,8 +1,6 @@
 <?php
 // Header reutilizable
 if(session_status() == PHP_SESSION_NONE){
-
-    session_name("Admin_Pokedex");
     session_start();
 }
 ?>

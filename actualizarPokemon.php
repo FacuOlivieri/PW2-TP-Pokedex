@@ -1,11 +1,10 @@
 <?php
 // Actualizar Pokémon
 include("config/bd.php");
-session_name("Admin_Pokedex");
 session_start();
 
 // Verificar admin
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['Admin_Pokedex'])){
     header("Location: index.php");
     exit();
 }
