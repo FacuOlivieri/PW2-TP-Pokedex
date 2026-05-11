@@ -1,33 +1,73 @@
 <?php
+// Actualizar Pokémon
+include("config/db.php");
+session_name("Admin_Pokedex");
+session_start();
+
+// Verificar admin
+if(!isset($_SESSION['admin'])){
+    header("Location: index.php");
+    exit();
+}
+
+// VALIDAR ID
+if(!isset($_POST['id'])){
+    header("Location: adminIndex.php");
+    exit();
+}
+
 $id = $_POST['id'];
 $numero_identificador = $_POST["numero_identificador"];
 $nombre = $_POST["nombre"];
+$descripcion = $_POST["descripcion"];
+$datos_extras = $_POST["datos_extras"];
 
+// tipo
+//Hay que borrar la imagen que se supone que reemplaza de los archivos
 
-$imagen = $_FILES["imagen"];
-if ($imagen["erro"] == 0) {
+$tipo = "";
+if (isset ($_POST ["tipo"] ) ) {
+    $tipo = implode(",", $_POST["tipo"] );
+}
+
+// imagen
+$imagenActual = $_POST["imagen_actual"];
+$rutaImagen = $imagenActual;
+
+if(isset($_FILES["imagen"]) && $_FILES["imagen"]["error"] == 0) {
+        
+    $imagen = $_FILES["imagen"];
     $rutaImagen = "imagenes/pokemon/" . $imagen["name"];
     move_uploaded_file($imagen["tmp_name"], $rutaImagen);
 }
-//Hay que borrar la imagen que se supone que reemplaza de los archivos
 
-$descripcion = $_POST["descripcion"];
-$datos_extras = $_POST["datos_extras"];
-$tipo = implode(",", $_POST["tipo"]);
+// actualizacion: 
+$statement = $conexion->prepare("
+    UPDATE pokemon 
+    SET numero_identificador = ?,
+    imagen = ?,
+    nombre = ?,
+    tipo = ?,
+    descripcion = ?,
+    datos_extras = ? WHERE id = ?
+");
 
-$conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
+$statement->bind_param(
+    "isssssi",
+    $numero_identificador,
+    $rutaImagen,
+    $nombre,
+    $tipo,
+    $descripcion,
+    $datos_extras,
+    $id
+);
 
-$sql = "UPDATE pokemon SET 
-        numero_identificador = '$numero_identificador',
-        imagen = '$rutaImagen',
-        nombre = '$nombre', 
-        tipo = '$tipo',
-        descripcion = '$descripcion', 
-        datos_extras = '$datos_extras'
-        WHERE id = $id";
+$statement->execute();
 
-$conexion->query($sql);
-
+$statement->close();
 $conexion->close();
-header('location: indexAdmin.php');
+
+header("Location: adminIndex.php");
 exit();
+?>

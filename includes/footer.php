@@ -1,0 +1,4 @@
+// Footer reutilizable
+
+</body>
+</html>

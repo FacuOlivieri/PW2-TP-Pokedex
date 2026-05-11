@@ -1,37 +1,45 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
-$resultado = $conexion->query("SELECT * FROM pokemon");
+include("config/bd.php");
+include("includes/header.php");
 
+//si es admin, entonces:
+if (isset ($_SESSION['admin']) ) {
+    header("location: indexAdmin.php");
+    exit();
+}
 
+// Mostrar listado de pokémon y búsqueda
+$buscar = "";
+
+if (isset($_GET['buscar'])) {
+    $buscar = $_GET['buscar'];
+}
+
+if ($buscar != "" ) {
+    // 'prepare' para que no se rompa consulta
+    $statement = $conexion->prepare("
+        SELECT * FROM pokemon WHERE nombre 
+        LIKE ? OR
+        tipo LIKE ? OR 
+        numero_identificador LIKE ?");
+    
+    $textoBusqueda = "%$buscar%";
+ 
+    // sss = string, string, string
+    $statement->bind_param("sss", $textoBusqueda, $textoBusqueda, $textoBusqueda);
+
+    $statement->execute();
+    $resultado = $statement->get_result();
+
+} else {
+    $resultado = $conexion->query("SELECT * FROM pokemon");
+}
+
+$iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-
+// includes/header.php
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-custom py-3">
-    <div class="container">
-
-        <!-- Logo -->
-        <div class="d-flex align-items-center gap-3">
-            <div class="logo-box">Logo</div>
-            <h1 class="title m-0">Pokedex</h1>
-        </div>
-
         <!-- CONTENEDOR LOGIN -->
         <div class="d-flex flex-column align-items-end ms-auto">
 
@@ -43,30 +51,29 @@ $resultado = $conexion->query("SELECT * FROM pokemon");
             </form>
 
             <?php
-
             $userid = uniqid("user_",true);
 
             setcookie("adminPokemon",$userid,time()+3600);
 
-
             if (isset($_GET["campoVacio"])) {
-                echo "
-                        <p class='login-warning'>
-                            <i class='bi bi-exclamation-circle'></i>
-                            Ningún campo debe quedar vacío
-                        </p>
-                    ";
+
+                echo "<p class='login-warning'>
+                    <i class='bi bi-exclamation-circle'> </i>
+                    Ningún campo debe quedar vacío
+                </p>";
             }
             if (isset($_GET["credencialesIncorrectas"])) {
-            echo "<p class='login-warning'>
-                  <i class='bi bi-exclamation-circle'></i>
-                  Usuario o contraseña incorrectos
-                  </p>";
+
+                echo "<p class='login-warning'>
+                    <i class='bi bi-exclamation-circle'> </i>
+                    Usuario o contraseña incorrectos
+                </p>";
             }
-
             ?>
+            </div>
+                <h1 class="title m-0">Pokedex</h1>
+            </div>
         </div>
-
     </div>
 </nav>
 
@@ -74,30 +81,35 @@ $resultado = $conexion->query("SELECT * FROM pokemon");
 <div class="container mt-5">
 
     <!-- BUSCADOR -->
-    <div class="search-section shadow-sm mb-4">
+    <form method="GET" class="search-section shadow-sm mb-4">
 
         <div class="row g-3">
 
             <div class="col-md-10">
-                <input type="text" class="form-control form-control-lg"
-                       placeholder="Ingrese el nombre, tipo o número del Pokémon">
+
+                <input 
+                    type="text" 
+                    class="form-control form-control-lg"   
+                    placeholder="Ingrese el nombre, tipo o número del Pokémon"
+                    value="<?php echo $buscar; ?>
+                ">
+            
             </div>
 
             <div class="col-md-2 d-grid">
+
                 <button class="btn btn-primary btn-lg">
                     ¿Quién es este Pokémon?
                 </button>
+
             </div>
-
         </div>
-
-    </div>
+    </form>
 
     <!-- TABLA -->
     <div class="table-container shadow-sm">
-        <h3 class="mb-4">
-            Lista de Pokemones
-        </h3>
+
+        <h3 class="mb-4"> Lista de Pokemones </h3>
 
         <div class="table-responsive">
             <table class="table table-hover align-middle text-center">
@@ -107,39 +119,52 @@ $resultado = $conexion->query("SELECT * FROM pokemon");
                     <th>Tipo</th>
                     <th>Número</th>
                     <th>Nombre</th>
+                    <th>Detalle</th>
                 </tr>
                 </thead>
 
                 <tbody>
+
                 <?php
                 //Obtener y procesar los resultados
-                $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
+                if ($resultado->num_rows > 0) {
+                    while ( $pokemon = $resultado->fetch_assoc() ) {
 
-                while ( $pokemon = $resultado->fetch_assoc() ) {
-                    echo "<tr>";
-                    echo "<td><img src='" . $pokemon['imagen'] . "' class='pokemon-img'></td>";
+                        echo "<tr>";
+                        echo "<td> <img src='" . $pokemon['imagen'] . "' 
+                                class='pokemon-img'> </td>";
 
-                    // TIPOS
-                    $tipos = explode(",", $pokemon['tipo']);
-                    echo "<td>";
-                    foreach ($tipos as $tipo) {
-                        if (isset($iconosGuardados[$tipo])) {
-                            echo "<img src='" . $iconosGuardados[$tipo] . "' class='iconos-tabla' alt='$tipo'>";
+                        // TIPOS
+                        $tipos = explode(",", $pokemon['tipo']);
+                        echo "<td>";
+
+                        foreach ($tipos as $tipo) {
+                            if (isset ($iconosGuardados [$tipo] ) ) {
+                                echo "<img src='" . $iconosGuardados[$tipo] . "' 
+                                    class='iconos-tabla' alt='$tipo'>";
                         }
                     }
                     echo "</td>";
                     echo "<td>" . $pokemon["numero_identificador"] . "</td>";
                     echo "<td>" . $pokemon["nombre"] . "</td>";
+                    echo "<td>
+                            <a href='detalle.php?id=" . $pokemon['id'] . "'
+                            class='btn btn-primary btn-sm'>
+                            Ver
+                            </a>
+                        </td>";
                     echo "</tr>";
+                    }
+                } else {
+                    // 'colspan' hace que ocupe toda la columna (son 4)
+                    echo "<tr> <td colspan='5'> Pokemon no encontrado </td> </tr>";
                 }
+                
                 ?>
                 </tbody>
-
             </table>
 
         </div>
-
     </div>
 </div>
-</body>
-</html>
+<?php include("includes/footer.php"); ?>

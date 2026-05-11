@@ -1,7 +1,9 @@
 <?php
-$id = $_GET['id'];
+// Eliminar pokémon
+include("config/db.php");
+session_start();
 
-$conexion = new mysqli("localhost", "root", "", "pokedex_pw2");
+$id = $_GET['id'];
 
 $statement = $conexion->prepare("DELETE FROM pokemon WHERE id = ?");
 
@@ -14,4 +16,4 @@ $conexion->close();
 
 header('location: indexAdmin.php');
 exit();
-
+?>
