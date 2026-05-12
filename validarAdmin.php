@@ -1,23 +1,36 @@
 <?php
+include("config/bd.php");
 
 session_start();
 
-if (empty($_POST['username']) || empty($_POST['password'])) {
-    header("Location: index.php?campoVacio=1");
-    exit();
+// Consulta
+$sql = "SELECT contrasenia FROM administrador WHERE usuario = ?";
+
+
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param("s", $_POST['username']);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if ($fila = $resultado->fetch_assoc()) {
+
+    $passHash = $fila['contrasenia'];
+
+    // Verificar contraseña
+    if (password_verify($_POST['password'], $passHash)) {
+
+        $_SESSION['Admin_Pokedex'] = "valido";
+        $_SESSION['usuario'] = $_POST['username'];
+
+        header("Location: indexAdmin.php");
+        exit();
+    }
 }
 
-// Validar el usuario
-if ($_POST['username'] == "admin" && $_POST['password'] == "1234") {
-    $_SESSION['Admin_Pokedex'] = "valido";
-    $_SESSION['usuario'] = $_POST['username'];
-    header("Location: indexAdmin.php");
-    exit();
-
-} else {
-    header("Location: index.php?credencialesIncorrectas=1");
-    exit();
-}
+header("Location: index.php?credencialesIncorrectas=1");
+exit();
+?>
 
 
 /*
