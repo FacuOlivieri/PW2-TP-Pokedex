@@ -1,5 +1,3 @@
-<h1 class="title m-0">Pokedex</h1>
-</div>
 
 <div class="ms-auto d-flex flex-column align-items-end gap-2">
     <form action="validarAdmin.php" class="d-flex gap-2" method="post">

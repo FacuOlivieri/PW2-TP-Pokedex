@@ -28,10 +28,3 @@ if(session_status() == PHP_SESSION_NONE){
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-custom py-3">
-    <div class="container">
-
-        <!-- Logo -->
-        <div class="d-flex align-items-center gap-3">
-            <div class="logo-box">Logo</div>

@@ -36,9 +36,9 @@ if (!$pokemon) {
 $tiposSeleccionados = explode(",", $pokemon["tipo"]);
 ?>
 
+
 <div class="container mt-5 mb-5">
     <div class="table-container shadow-sm">
-
         <h1 class="mb-4"> 
             Editar a 
             <?php 
@@ -50,19 +50,9 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
             method="post" 
             enctype="multipart/form-data">
 
-            // id:
-            <input type="hidden" 
-                name="id" 
-                value="<?php echo $pokemon["id"]; ?>
-            ">
+            <input type="hidden" name="id" value="<?php echo $pokemon["id"]; ?>">
+            <input type="hidden" name="imagen_actual" value="<?php echo htmlspecialchars($pokemon ["imagen"] ); ?>">
 
-            // imagen actual:
-            <input type="hidden" 
-                name="imagen_actual"
-                value="<?php echo htmlspecialchars($pokemon ["imagen"] ); ?>
-            ">
-
-            // numero:
             <div class="mb-4">
                 <label class="form-label fw-bold"> Numero identificatorio </label>
                 
@@ -76,14 +66,13 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                 >
             </div>
 
-            // imagen
             <div class="mb-4">
-                <label class="form-label fw-bold"> Imagen del Pokemon </label>
+                <label class="form-label fw-bold"> Imagen del Pokemon </label><br>
                 <img src="<?php echo $pokemon['imagen']; ?>" width="250" class="rounded shadow mb-3">
                 <input type="file" class="form-control" name="imagen">
             </div>
 
-            // nombre
+
             <div class="mb-4">
                 <label class="form-label fw-bold"> Nombre del Pokemon </label>
 
@@ -97,12 +86,10 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                 >
             </div>
 
-            // tipo
+
             <div class="mb-4">
                 <label class="form-label fw-bold d-block mb-3"> Tipo de Pokemon </label>
-
                 <div class="row">
-
                     <?php
                     $iconos = parse_ini_file("iconosTipoPokemon.ini");
 
@@ -110,9 +97,8 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                         $checked = in_array($tipo, $tiposSeleccionados) ? "checked" : "";
 
                         echo "<div class='col-md-3 mb-3'>
-                                <label class='type-card'
+                                <label class='type-card'>
                                 <img src='$icono' class='type-icon' alt='$tipo'>
-
                                 <input type='checkbox' name='tipo[]' value='$tipo' $checked> 
                                 <span>$tipo</span>
 
@@ -124,7 +110,6 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                 </div>
             </div>
 
-            // descripcion:
             <div class="mb-4">
                 <label class="form-label fw-bold"> Descripcion </label>
 
@@ -138,7 +123,7 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                 </textarea>
             </div>
 
-            // datos extra
+
             <div class="mb-4">
                 <label class="form-label fw-bold"> Datos extras </label>
 
@@ -152,10 +137,9 @@ $tiposSeleccionados = explode(",", $pokemon["tipo"]);
                 </textarea>
             </div>
 
-            // botones
+
             <div class="d-flex justify-content-end gap-3">
-                <a href="indexAdmin.php" class="btn btn-secondary"> Cancelar </a>
-                
+                <a href="index.php" class="btn btn-secondary"> Cancelar </a>
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-plus-circle"> </i>
                     Guardar Pokemon

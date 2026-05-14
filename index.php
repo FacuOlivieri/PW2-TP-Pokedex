@@ -2,6 +2,7 @@
 session_start();
 include("config/bd.php");
 include("includes/header.php");
+include("includes/navbar.php");
 
 // Mostrar listado de pokémon y búsqueda
 include("includes/listadoYBusqueda.php");
@@ -9,14 +10,9 @@ include("includes/listadoYBusqueda.php");
 $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
 // includes/header.php
 
-
-if (isset ($_SESSION['Admin_Pokedex']) ) {
-    include ("includes/frontLogout.php");
-} else {
-    include ("includes/frontLogin.php");
-}
-
 ?>
+
+
 <!-- CONTENIDO -->
 <div class="container mt-5">
 

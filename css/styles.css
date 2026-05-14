@@ -9,6 +9,12 @@ body {
     background-color: white;
     border-bottom: 2px solid #dcdcdc;
     padding: 15px 0;
+    min-height: 95px;
+}
+
+.navbar-custom .container {
+    display: flex;
+    align-items: center;
 }
 
 /* LOGO */
@@ -22,6 +28,29 @@ body {
     font-weight: bold;
     background-color: #fafafa;
     border-radius: 10px;
+}
+
+/* LOGIN */
+.login-container {
+    margin-left: auto;
+}
+
+.login-container form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-container .form-control {
+    min-width: 180px;
+}
+
+/* ADMIN PANEL */
+.admin-panel {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 /* TITULO */
@@ -113,6 +142,7 @@ table td {
     margin-top: 8px;
     margin-bottom: 0;
     font-weight: 500;
+    text-align: right;
 }
 
 /* USUARIO ADMIN */
@@ -120,13 +150,16 @@ table td {
     font-size: 1.05rem;
     font-weight: 600;
     color: #444;
+    margin: 0;
 }
 
 /* ACCIONES */
 .actions {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 8px;
+    min-height: 70px;
 }
 
 .actions a {

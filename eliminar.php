@@ -14,6 +14,6 @@ $statement->execute();
 $statement->close();
 $conexion->close();
 
-header('location: indexAdmin.php');
+header('location: index.php');
 exit();
 ?>

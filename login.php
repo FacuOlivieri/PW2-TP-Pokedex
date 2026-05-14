@@ -6,7 +6,7 @@ include("includes/header.php");
 // Si ya inició sesión
 if(isset($_SESSION['admin'])){
 
-    header("Location: indexAdmin.php");
+    header("Location: index.php");
     exit();
 }
 // sino:

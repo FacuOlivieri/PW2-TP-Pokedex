@@ -71,7 +71,7 @@ include("includes/header.php");
             </div>
 
             <div class="d-flex justify-content-end gap-3">
-                <a href="indexAdmin.php" class="btn btn-secondary">Cancelar</a>
+                <a href="index.php" class="btn btn-secondary">Cancelar</a>
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-plus-circle"></i>
                     Guardar Pokemon

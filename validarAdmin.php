@@ -3,10 +3,16 @@ include("config/bd.php");
 
 session_start();
 
+$usuarioIntroducido = $_POST["username"];
+$passwordIntroducida = $_POST["password"];
+
+if ($usuarioIntroducido == "" || $passwordIntroducida == "") {
+    header("location: index.php?campoVacio=1");
+    exit();
+}
+
 // Consulta
 $sql = "SELECT contrasenia FROM administrador WHERE usuario = ?";
-
-
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $_POST['username']);
 $stmt->execute();
@@ -15,15 +21,19 @@ $resultado = $stmt->get_result();
 
 if ($fila = $resultado->fetch_assoc()) {
 
-    $passHash = $fila['contrasenia'];
+    //$passHash = $fila['contrasenia'];
+    //if (password_verify($passwordIntroducida, $fila['contrasenia'])) {
 
-    // Verificar contraseña
-    if (password_verify($_POST['password'], $passHash)) {
+    //Lo comento porque la contrasenia en BD no esta hasheada
 
+
+
+
+    if ($passwordIntroducida == $fila['contrasenia']) {
         $_SESSION['Admin_Pokedex'] = "valido";
-        $_SESSION['usuario'] = $_POST['username'];
+        $_SESSION['usuario'] = $usuarioIntroducido;
 
-        header("Location: indexAdmin.php");
+        header("Location: index.php");
         exit();
     }
 }
