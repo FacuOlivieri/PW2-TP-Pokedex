@@ -12,16 +12,17 @@ body {
 }
 
 /* LOGO */
-.logo-box {
-    width: 70px;
+.logo-box{
+    width: 60px;
     height: 70px;
-    border: 2px dashed #999;
+    flex: 0 0 70px;
+    border-radius: 10px;
+    background: #fafafa;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    background-color: #fafafa;
-    border-radius: 10px;
+    padding: 6px;
+    overflow: hidden;
 }
 
 /* TITULO */

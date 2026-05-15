@@ -108,7 +108,7 @@ $iconosGuardados = parse_ini_file("iconosTipoPokemon.ini");
                                     <div class='actions'>
                                         <a href='detalle.php?id=" . $pokemon['id'] . "' class='btn btn-primary btn-sm'>Ver</a>
                                         <a href='editar.php?id=" . $pokemon["id"] . "' class='edit'>Editar</a>
-                                        <a href='eliminar.php?id=" . $pokemon["id"] . "' class='delete' onclick=\"return confirm('Â¿Eliminar pokemon?')\">Eliminar</a>
+                                        <a href='eliminar.php?id=" . $pokemon["id"] . "' class='delete' onclick=\"return confirm('¿Eliminar pokemon?')\">Eliminar</a>
                                     </div>
                                   </td>";
                             echo "</tr>";

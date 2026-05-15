@@ -30,7 +30,7 @@ if (isset ($_SESSION['Admin_Pokedex']) ) {
     ?>
 
     <!-- BUSCADOR -->
-    <form method="GET" class="search-section shadow-sm mb-4">
+    <form  method="GET" class="search-section shadow-sm mb-4">
         <div class="row g-3">
             <div class="col-md-10">
                 <input type="text" name="buscar" class="form-control form-control-lg search-input"

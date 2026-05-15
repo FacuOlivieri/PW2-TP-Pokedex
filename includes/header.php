@@ -6,27 +6,21 @@ if(session_status() == PHP_SESSION_NONE){
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pokedex</title>
-
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
-
     <!-- CSS altaPokemon -->
     <link rel="stylesheet" href="css/altaPokemon.css">
-
+    <!-- CSS detallePokemon -->
+    <link rel="stylesheet" href="css/detallePokemon.css">
 </head>
-
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom py-3">
@@ -34,4 +28,6 @@ if(session_status() == PHP_SESSION_NONE){
 
         <!-- Logo -->
         <div class="d-flex align-items-center gap-3">
-            <div class="logo-box">Logo</div>
+            <div class="logo-box">
+                <img src="/imagenes/Logo.png" alt="Logo Pokedex" style="height: 60px" width="60px">
+            </div>

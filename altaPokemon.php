@@ -62,7 +62,7 @@ include("includes/header.php");
 
             <div class="mb-4">
                 <label class="form-label fw-bold">Descripción</label>
-                <textarea class="form-control" rows="4" name="descripcion" placeholder="DescripciÃ³n del PokÃ©mon..."></textarea>
+                <textarea class="form-control" rows="4" name="descripcion" placeholder="Descripción del Pokemon..."></textarea>
             </div>
 
             <div class="mb-4">
