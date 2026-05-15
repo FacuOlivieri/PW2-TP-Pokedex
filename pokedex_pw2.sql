@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `administrador`
 --
 
+CREATE DATABASE pokedex_pw2;
+USE pokedex_pw2;
+
 CREATE TABLE `administrador` (
   `usuario` varchar(40) DEFAULT NULL,
   `contrasenia` varchar(255) DEFAULT NULL
